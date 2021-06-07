@@ -7,6 +7,31 @@
 
 Deploying Retool on-premise ensures that all access to internal data is managed within your own cloud environment. You also have the flexibility to control how Retool is setup within your infrastructure, configure logging, and enable custom SAML SSO using providers like Okta and Active Directory.
 
+
+## Deploy/Upgrade process for Airgapped Retool
+
+> **IMPORTANT**: In order to deploy/upgrade the Airgapped retool, please follow these steps:
+
+If deploying for the first time, ensure the env vars are set. See section below _"Running Retool using Aptible"_ for more details
+
+Then just run the following in order to deploy the latest AirGapped version:
+
+```sh
+aptible login
+aptible deploy --app=<retool-aptible-app-handle> --docker-image=tryretool/backend-airgapped:latest
+```
+
+If you want to deploy an specific version tag instead of `latest`, you can review the available ones here:
+https://hub.docker.com/r/tryretool/backend-airgapped/tags?page=1&ordering=last_updated
+
+If upgrading `latest`, you can use the `rebuild` command which will pull the latest image available, or deploy a specific version like shown
+above.
+
+```sh
+aptible rebuild --app=<retool-aptible-app-handle>
+```
+
+
 # Table of contents
 - [Select a Retool version number](#select-a-retool-version-number)
 - [Simple deployments](#simple-deployments)
